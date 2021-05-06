@@ -15,6 +15,7 @@ commands:
       - run:
           name: Merge to target branch
           command: |
+            echo -n ${CIRCLE_PULL_REQUEST}
             if [[ -n ${CIRCLE_PULL_REQUEST} ]]
             then
               git config --global user.email "$( git log --format='%ae' $CIRCLE_SHA1^! )"
