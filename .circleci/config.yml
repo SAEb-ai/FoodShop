@@ -8,11 +8,39 @@ anchor_for_job_defaults: &job_defaults
   working_directory: /home/circleci/testing
   docker:
     - image: *docker_image
+commands:
+  merge_target_branch:
+    description: "Merge to target branch"
+    steps:
+      - run:
+          name: Merge to target branch
+          command: |
+            if [[ -n ${CIRCLE_PULL_REQUEST} ]]
+            then
+              git config --global user.email "$( git log --format='%ae' $CIRCLE_SHA1^! )"
+              git config --global user.name "$( git log --format='%an' $CIRCLE_SHA1^! )"
+              regexp="[[:digit:]]\+$"
+              PR_NUMBER=`echo $CIRCLE_PULL_REQUEST | grep -o $regexp`
+              curl -L "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64" -o jq
+              chmod +x jq
+              url="https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls/$PR_NUMBER?access_token=$GITHUB_TOKEN"
+              target_branch=$(
+                curl "$url" | ./jq '.base.ref' | tr -d '"'
+              )
+              rm jq
+              if [[ "$target_branch" == null ]]
+              then
+                git pull git@github.com:SAEb-ai/FoodShop.git develop --no-edit
+              else
+                git pull origin $target_branch --no-edit
+              fi
+            fi
 jobs:
   setup_and_typescript_test:
     <<: *job_defaults
     steps:
       - checkout
+      - merge_target_branch
 workflows:
   # Name the workflow "welcome"
   welcome:
