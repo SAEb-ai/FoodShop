@@ -9,6 +9,14 @@ anchor_for_job_defaults: &job_defaults
   docker:
     - image: *docker_image
 commands:
+
+  upload_screenshots:
+    description: "Upload protractor screenshots folder as an artifact"
+    steps:
+      - store_artifacts:
+          path: /home/circleci/protractor-screenshots/
+          destination: protractor-screenshots
+          
   merge_target_branch:
     description: "Merge to target branc"
     steps:
@@ -42,6 +50,7 @@ jobs:
     steps:
       - checkout
       - merge_target_branch
+      - upload_screenshots
 workflows:
   # Name the workflow "welcome"
   welcome:
