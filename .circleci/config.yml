@@ -10,7 +10,7 @@ anchor_for_job_defaults: &job_defaults
     - image: *docker_image
 commands:
   merge_target_branch:
-    description: "Merge to target branch"
+    description: "Merge to target branc"
     steps:
       - run:
           name: Merge to target branch
