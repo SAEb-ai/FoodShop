@@ -9,7 +9,7 @@ anchor_for_job_defaults: &job_defaults
   docker:
     - image: *docker_image
 jobs:
-  setup_and_typescript_tests:
+  setup_and_typescript_test:
     <<: *job_defaults
     steps:
       - checkout
