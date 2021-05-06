@@ -18,4 +18,4 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - setup_and_typescript_tests
+      - setup_and_typescript_test
