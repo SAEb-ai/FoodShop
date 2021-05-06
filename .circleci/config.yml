@@ -45,7 +45,7 @@ commands:
               fi
             fi
 jobs:
-  setup_and_typescript_test:
+  setup_and_typescript_tests:
     <<: *job_defaults
     steps:
       - checkout
