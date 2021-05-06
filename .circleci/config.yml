@@ -15,7 +15,7 @@ commands:
     steps:
       - store_artifacts:
           path: /home/circleci/protractor-screenshots/
-          destination: protractor-screenshots
+          destination: protractor-screensho
           
   merge_target_branch:
     description: "Merge to target branc"
