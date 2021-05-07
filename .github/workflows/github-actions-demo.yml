@@ -15,3 +15,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Uploading protractor-screenshots as Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: protractor-screenshots
+          path: /home/runner/work/FoodShop/protractor-screenshots
