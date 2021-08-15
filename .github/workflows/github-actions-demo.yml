@@ -17,10 +17,9 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Setup Homebrew
         run: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null
-      - name: Install Chrome for MAC OS
+      - name: Setup Chrome
         run: brew install google-chrome
-      - run: chrome --version
-      - name: Install FFMPEG
+      - name: Setup FFmpeg
         run: brew install ffmpeg
       - name: Uploading protractor-screenshots as Artifacts
         uses: actions/upload-artifact@v2
