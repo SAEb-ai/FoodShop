@@ -18,7 +18,7 @@ jobs:
       - name: Setup Homebrew
         run: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null
       - name: Install Chrome for MAC OS
-        run: brew install --cask google-chrome
+        run: brew tap homebrew/cask-versions && brew install --cask google-chrome-canary
       - run: chrome --version
       - name: Install FFMPEG
         run: brew install ffmpeg
