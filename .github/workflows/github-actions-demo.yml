@@ -16,7 +16,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Setup Chrome
-        uses: browser-actions/setup-chrome@88.0.4324.96
+        uses: browser-actions/setup-chrome@v88.0.4324.96
       - run: chrome --version
       - name: Uploading protractor-screenshots as Artifacts
         uses: actions/upload-artifact@v2
