@@ -18,7 +18,7 @@ jobs:
       - name: Setup Homebrew
         run: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 2> /dev/null
       - name: Setup Chrome
-        run: brew install google-chrome@88.0.4324.96
+        run: brew install google-chrome@88.0.4324.96-1
       - name: Setup FFmpeg
         run: brew install ffmpeg
       - name: Uploading protractor-screenshots as Artifacts
