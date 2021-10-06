@@ -9,7 +9,7 @@ on:
         - main
         - release-*
     schedule:
-    - cron:  '1 * * * *'
+    - cron:  '* * * * *'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-18.04
