@@ -1,8 +1,13 @@
 name: GitHub Actions Demo
 on: 
-    push: 
-    - branches:
-        - patch-1
+    push:
+      branches:
+        - main
+        - release-*
+    pull_request:
+      branches:
+        - main
+        - release-*
     schedule:
     - cron:  '1 * * * *'
 jobs:
